@@ -364,3 +364,27 @@ Now in your main.yml file call the roles as mentioned below:
 Run your ansible playbook
 
 ansible-playbook main.yml -i environments/dev/inventory/hosts — extra-vars env=dev
+
+
+Provisioning EC2 key pairs with terraform.
+------------
+
+terraform code, you have to just use this key name in your configuration like this
+
+resource “aws_instance” “bastion” {
+count = “1”
+connection {
+ user = “ubuntu”
+ // private_key = “${base64decode(var.ssh_private_key)}”
+ }
+instance_type = “${var.instance_type}”
+ami = “${var.aws_amis}”
+key_name = “${local.ssh_key_name}”
+Create New Key
+
+You can create a new key, you have to pass the public key as shown, you can use the path or hardcoded the public key .
+
+resource "aws_key_pair" "deploy" {
+  key_name   = "Terraform-test"
+  public_key = "ssh-rsa "
+} 
