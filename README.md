@@ -4,6 +4,7 @@ DevOps_Jenkins_Graddle_python_terraform_puppet_helm_AWS_Azure
 CI/CD Flow:
 
 CI:
+CI  with Jenkins,SOnar,gradle,jacakoo and Docker
 
 1.Jenkins setup on AWS
 2.Integrate Artifactory with Jenkins
@@ -23,6 +24,8 @@ Staging the Docker host needs to pull the image from the Docker registry.
 Jenkins runs the acceptance test suite against the application running in the staging environment.
 
 CD: 
+Continuous Deployment to Lambda function using Bitbucket pipeline
+
 1.Docker image
 2.We are using caches feature of bitbucket pipeline. We are doing custom caching for node_modules folder
 3.Run the npm install command
