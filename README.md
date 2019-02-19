@@ -56,7 +56,9 @@ S3 bucket on AWS
 bitbucket-pipeline.yaml file
 AWS Secret Keys
 Environment Variables
+
 How to setup a Continuous Deployment to Amazon S3 using Bitbucket pipeline
+--Bitbucket Pipelines is an integrated CI/CD service, built into Bitbucket. It allows you to automatically build, test and even deploy your code, based on a configuration file in your repository. ... The bitbucket-pipelines.yml file holds all the build configurations for your repository.
 
 Create a bitbucket-pipeline.yaml file at the root of your project
 For the specific bitbucket repository -> Go to Settings -> Add Repository variables
