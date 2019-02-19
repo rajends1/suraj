@@ -322,3 +322,45 @@ definitions:
  caches:          
 node-admin: admin/node_modules          
 node-web: web/node_modules
+
+
+Manage Ansible Playbook for multiple environments
+------------------
+
+Now in your main.yml file call the roles as mentioned below:
+
+---
+- hosts: all
+  become: yes
+  gather_facts: no
+  vars_files:
+    - environments/{{ env }}//group_vars//main.yml
+  roles:
+    # -  ssh 
+     
+- hosts: sandbox
+  become: yes
+  gather_facts: no
+  vars_files:
+     - environments/{{ env }}//group_vars//main.yml
+  roles:
+      -  web
+      -  php
+- hosts: proxy
+  become: yes
+  gather_facts: no
+  vars_files:
+     - environments/{{ env }}//group_vars//main.yml
+  roles:
+      -  certbot
+      
+- hosts: proxy
+  become: yes
+  gather_facts: no
+  vars_files:
+     - environments/{{ env }}//group_vars//main.yml
+  roles:
+      -  nginx
+Run your ansible playbook
+
+ansible-playbook main.yml -i environments/dev/inventory/hosts — extra-vars env=dev
